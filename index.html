@@ -146,10 +146,9 @@ input.txt{font:600 20px Fredoka;padding:8px 12px;border:3px solid var(--ink);bor
 <body>
 <div class="sparkles" id="sparkles" aria-hidden="true"></div>
 <header>
-  <h1><span id="who">Your</span><br>Advent Adventure</h1>
+  <h1><span id="who">Nylah’s</span><br>Advent Adventure</h1>
   <div class="doodles" aria-hidden="true"><img id="h1i" alt=""><img id="h2i" alt=""><img id="h3i" alt=""></div>
   <p class="sub">24 doors. 24 surprises. One a day! Plus a Christmas Day showstopper ✨</p>
-  <div class="namebox"><input id="nm" placeholder="Type your name here" maxlength="20" autocomplete="off"></div>
   <div class="prog" id="prog"></div>
   <button class="btn y studio" id="certbtn" style="display:none">🏆 My certificate</button>
 </header>
@@ -342,7 +341,7 @@ function comicAct(root){
     el('div',{style:'text-align:center;margin-top:8px'},el('button',{class:'btn y',onclick:()=>make()},'🎬 Make my comic strip now')),
     el('div',{class:'note',style:'font-size:16px'},el('b',{},'💡 Tip: '),'Great comics have a twist. Panel 2 is where something unexpected happens, and panel 3 is the big moment where everything changes.'));
   function make(){view.innerHTML='';
-    const nmv=store('adv-name')||'Nylah';
+    const nmv='Nylah';
     const title=el('div',{contenteditable:'true',style:'font:400 30px/1.1 \'Lilita One\',Fredoka,sans-serif;text-align:center;color:#f04a23;margin:4px 0 8px;outline:none;border-bottom:2px dashed #eca3b9'},'My Comic');
     const strip=el('div',{style:'background:#f5edd9;border:4px solid #231815;border-radius:16px;padding:12px;max-width:420px;margin:8px auto'});
     const g=el('div',{style:'display:grid;grid-template-columns:1fr 1fr;gap:10px'});
@@ -447,7 +446,7 @@ function lightsAct(root){
   build();
 }
 function mandalaAct(root){
-  const nm=store('adv-name')||'Nylah';
+  const nm='Nylah';
   root.append(el('div',{class:'cardbox',style:'text-align:center'},el('h3',{},`Welcome, ${nm}! 🎄`),el('p',{style:'margin:4px 0'},'Your advent adventure starts today. A new door opens every day until Christmas Eve: games, music, art and a few real-life crafts, with a craft stocking your grown-up will give you.'),el('p',{style:'margin:6px 0 0;font-size:15px'},'💾 Your progress saves as you go. You can also use “Save or load my progress” on the main page.')));
   root.append(el('p',{class:'intro'},'First up: Mandala Studio. Whatever you draw gets copied all the way round the middle, so even a scribble turns into a pattern. Try the different settings!'));
   const W=360,H=360,CX=180,CY=180;let cur=POSCA[0],n=8,mirror=true,lw=5,dark=true,hist=[],last=null;
@@ -1103,7 +1102,7 @@ const BADGES=[
   {i:'fball',n:'Sports Star',d:[9,14],t:'Aim, timing and staying calm, with hoops and free kicks.'},
   {i:'bauble',n:'Maker',d:[5,8,13,15,17],t:'Salt dough, painting, building animals and sewing felt, all by hand.'}];
 function fireworksPage(box,next){
-  box.innerHTML='';const nm=store('adv-name')||'Nylah';const W=360,H=400;
+  box.innerHTML='';const nm='Nylah';const W=360,H=400;
   const cv=el('canvas',{width:W,height:H,style:'width:100%;max-width:360px;display:block;margin:0 auto;border:3px solid #231815;border-radius:14px;touch-action:manipulation;background:#0b1233'});const x=cv.getContext('2d');
   const COLS=['#f04a23','#eca3b9','#f9d56e','#ffffff','#7fd6ff','#9af5b0'];const stars=[...Array(40)].map(()=>[Math.random()*W,Math.random()*H*.75,Math.random()*1.6+.4,Math.random()*6]);
   let rockets=[],parts=[],raf=0,t0=0,auto=0;
@@ -1122,7 +1121,7 @@ function fireworksPage(box,next){
     el('div',{class:'row'},el('button',{class:'btn',onclick:()=>{for(let i=0;i<7;i++)setTimeout(()=>launch(),i*160)}},'🎆 More fireworks'),el('button',{class:'btn y',onclick:()=>{cleanups.forEach(f=>f());cleanups=[];next()}},'Continue ▶')));
   later(confetti,400)}
 function summaryPage(box,extra){
-  box.innerHTML='';const nm=store('adv-name')||'Nylah';const op=opened();
+  box.innerHTML='';const nm='Nylah';const op=opened();
   box.append(el('img',{src:IMG.poster,alt:'Merry Christmas '+nm,style:'width:100%;max-width:300px;display:block;margin:0 auto;border-radius:14px'}),
     el('div',{class:'big',style:'margin-top:8px;font-size:21px'},'🌟 What you learned this month'));
   const bd=el('div',{class:'badges'});let earned=0;
@@ -1133,7 +1132,7 @@ function summaryPage(box,extra){
   if(extra)box.append(extra());
   later(confetti,300)}
 function certCanvas(){
-  const nm=store('adv-name')||'Nylah';const W=860,H=640,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  const nm='Nylah';const W=860,H=640,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
   x.fillStyle='#fffaf0';x.fillRect(0,0,W,H);x.strokeStyle='#f04a23';x.lineWidth=10;x.strokeRect(14,14,W-28,H-28);x.lineWidth=3;x.strokeRect(34,34,W-68,H-68);
   const star=(cx,cy,r,col)=>{x.fillStyle=col;x.beginPath();x.moveTo(cx,cy-r);x.quadraticCurveTo(cx,cy,cx+r,cy);x.quadraticCurveTo(cx,cy,cx,cy+r);x.quadraticCurveTo(cx,cy,cx-r,cy);x.quadraticCurveTo(cx,cy,cx,cy-r);x.fill()};
   star(90,90,22,'#f04a23');star(W-90,90,22,'#f04a23');star(90,H-90,22,'#eca3b9');star(W-90,H-90,22,'#eca3b9');
@@ -1145,12 +1144,12 @@ function certCanvas(){
   x.fillStyle='#231815';x.font="600 22px Fredoka,sans-serif";x.fillText('25 December '+YEAR+'  ·  Signed by Santa’s Head Elf',W/2,560);
   return c}
 function openCert(){cleanups.forEach(f=>f());cleanups=[];$('mt').textContent='My Certificate';const mb=$('mb');mb.innerHTML='';$('modal').classList.add('show');$('modal').scrollTop=0;
-  const nm=store('adv-name')||'Nylah';
+  const nm='Nylah';
   mb.append(el('div',{class:'cert'},el('h3',{},'🏆 Certificate of Awesomeness'),el('p',{style:'margin:6px 0'},'This certifies that'),el('div',{class:'nm'},nm),el('p',{style:'margin:6px 0;font-size:15px'},`completed the Advent Adventure ${YEAR}: drew, painted, played, built, coded and made things all December long.`),el('p',{style:'margin:8px 0 0;font:600 14px Fredoka;opacity:.8'},`25 December ${YEAR} · Signed by Santa’s Head Elf 🎅`)),
     el('div',{class:'row'},el('button',{class:'btn',onclick:()=>showImage(certCanvas(),'my-certificate.png','🎉 Your certificate! Take a screenshot, or press and hold the picture to save it. Show everyone!')},'📸 Save or share it'),el('button',{class:'btn alt',onclick:closeModal},'🏠 Back to the calendar')));confetti()}
 // ---------- day 25 quest ----------
 function finaleAct(root){
-  const nm=store('adv-name')||'Nylah';
+  const nm='Nylah';
   let stars=[];try{stars=JSON.parse(store('adv-final')||'[]')}catch(e){}
   const ST=[
    {id:'art',img:'palette',n:'Artist',d:'Mirror, mirror',run:(b,ok)=>mirrorStation(b,ok)},
@@ -1358,7 +1357,7 @@ function openDay(n){
 function closeModal(){cleanups.forEach(f=>f());cleanups=[];$('modal').classList.remove('show');$('mb').innerHTML='';render()}
 $('mx').onclick=closeModal;if(!GROWN)$('prev').style.display='none';$('certbtn').onclick=openCert;$('save').onclick=openSave;
 $('prev').onclick=()=>{ALL=!ALL;$('prev').textContent=ALL?'Grown-ups: back to normal':'Grown-ups: preview all doors';render()};
-const nm=$('nm');nm.value=store('adv-name')||'Nylah';const setName=()=>{const v=nm.value.trim();$('who').textContent=v?v+'’s':'Your';store('adv-name',v)};nm.oninput=setName;setName();
+
 (function(){const sp=$('sparkles'),C=['#f04a23','#eca3b9','#f9d56e','#f04a23','#eca3b9'],P='<svg viewBox="0 0 100 100"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z" fill="CC"/></svg>';
   for(let i=0;i<34;i++){const e=document.createElement('i'),z=10+Math.random()*26;e.style.cssText=`left:${Math.random()*96}%;top:${Math.random()*96}%;width:${z}px;height:${z}px;--d:${2.4+Math.random()*3}s;--l:-${Math.random()*5}s`;e.innerHTML=P.replace('CC',C[i%C.length]);sp.append(e)}})();
 $('h1i').src=IMG.dog;$('h2i').src=IMG.tree;$('h3i').src=IMG.ball;
