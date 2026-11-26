@@ -153,7 +153,7 @@ input.txt{font:600 20px Fredoka;padding:8px 12px;border:3px solid var(--ink);bor
   <button class="btn y studio" id="certbtn" style="display:none">🏆 My certificate</button>
 </header>
 <main class="grid" id="grid"></main>
-<footer>Doors open one per day from 1 December, with a big surprise on Christmas Day.<br><button id="save" style="margin:4px">💾 Save or load my progress</button><button id="prev">Grown-ups: preview all doors</button></footer>
+<footer>Doors open one per day from 1 December, with a big surprise on Christmas Day.<br><button id="save" style="margin:4px">💾 Save or load my progress</button><button id="prev">Grown-ups: preview all doors</button><button id="rst">Grown-ups: reset all progress</button></footer>
 
 <div class="modal" id="modal"><div class="mhead"><h2 id="mt"></h2><button class="x" id="mx" aria-label="Close">✕</button></div><div class="mbody" id="mb"></div></div>
 
@@ -1355,7 +1355,9 @@ function openDay(n){
   const done=opened();if(!done.includes(n)){done.push(n);store('adv-done',JSON.stringify(done))}
 }
 function closeModal(){cleanups.forEach(f=>f());cleanups=[];$('modal').classList.remove('show');$('mb').innerHTML='';render()}
-$('mx').onclick=closeModal;if(!GROWN)$('prev').style.display='none';$('certbtn').onclick=openCert;$('save').onclick=openSave;
+$('mx').onclick=closeModal;if(!GROWN){$('prev').style.display='none';$('rst').style.display='none'}$('certbtn').onclick=openCert;$('save').onclick=openSave;
+let rstArmed=0;$('rst').onclick=()=>{if(!rstArmed){rstArmed=1;$('rst').textContent='Tap again to wipe everything';setTimeout(()=>{rstArmed=0;$('rst').textContent='Grown-ups: reset all progress'},4000);return}
+  ['adv-name','adv-done','adv-craft','adv-lights','adv-final','adv-card'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});location.reload()};
 $('prev').onclick=()=>{ALL=!ALL;$('prev').textContent=ALL?'Grown-ups: back to normal':'Grown-ups: preview all doors';render()};
 
 (function(){const sp=$('sparkles'),C=['#f04a23','#eca3b9','#f9d56e','#f04a23','#eca3b9'],P='<svg viewBox="0 0 100 100"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z" fill="CC"/></svg>';
